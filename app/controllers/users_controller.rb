@@ -22,7 +22,12 @@ class UsersController < ApplicationController
   	end
 
     def callback
+      ex_email = {:name => "Franklin", :email => "franklin2412@gmail.com"}
+      email_list = []
       @contacts = request.env['omnicontacts.contacts']
+      @contacts.each do |email|
+        email_list << email
+      end
     end
     
   	private

@@ -1,5 +1,5 @@
 <% provide(:title, "contacts") %>
 
 <% @contacts.each do |contact| %>
-    	<p><%= contact[:name] unless contact[:email] == nil %> | <%= contact[:email] unless contact[:email] == nil %> 
-	<% end %>
+    <p><%= contact[:name] unless contact[:email] == nil %> | <%= contact[:email] unless contact[:email] == nil %> 
+<% end %>
