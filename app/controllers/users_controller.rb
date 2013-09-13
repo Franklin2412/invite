@@ -22,9 +22,7 @@ class UsersController < ApplicationController
   	end
 
     def callback
-     
       @contacts = request.env['omnicontacts.contacts']
-      
     end
     
   	private

@@ -1,7 +1,18 @@
 <% provide(:title, "contacts") %>
 
-<% @contacts.each do |contact| %>
-    <p><%= contact[:name] unless contact[:email] == nil %> | <%= contact[:email] unless contact[:email] == nil %> 
-<% end %>
+<div class="row">
+	<%= form_for(:invitation, url: invitations_path) do |f| %>
+		<div>
+			<% email_array = [] %>
+			<% @contacts.each do |contact| %>
+				<% email_array << contact[:email] %>
 
+				<%= check_box_tag :recipient_email, email_array %>
+				<%= f.label :recipient_email, "#{contact[:name]} | #{contact[:email]}" %>
+				
+			<% end %>
+		</div>
+		<%= f.submit "send" %>
+	<% end %>
+</div>
 

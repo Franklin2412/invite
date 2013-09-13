@@ -1,13 +1,19 @@
 Invite::Application.routes.draw do
     
+  get "invitations/new"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :invitations
+  
+  match '/signup/:invitation_token',  to: 'users#new',            via: 'get'
+  
   root 'static_pages#home'
 
   match "/users/:importer/callback", to: "users#callback", via:'get'
   get "/contacts/failure" => "users#failure"
 
-  match '/signup',  to: 'users#new',            via: 'get'
+ 
+ 
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 

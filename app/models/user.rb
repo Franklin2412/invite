@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   	has_secure_password
   	validates :password, length: { minimum: 6 }
 
+    has_many :sent_invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
+    belongs_to :invitation
+
   	def User.new_remember_token
     	SecureRandom.urlsafe_base64
   	end
